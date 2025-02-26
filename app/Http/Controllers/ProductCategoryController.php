@@ -53,6 +53,9 @@ class ProductCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = ProductCategory::find($id);
+        $categor->delete();
+        
+        return response()->json(['message'=>'deleted], 200)
     }
 }
