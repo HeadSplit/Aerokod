@@ -22,7 +22,8 @@ class ProductCategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            title' => 'required|string',
+            'parent_id' => 'sometimes|nullable|integer|exists:product_categories,id|not_in:'. $this->route('id'),
         ];
     }
 }
