@@ -24,38 +24,52 @@ class ProductCategoryController extends Controller
      */
     public function store(ProductCategoryRequest $request)
     {
-        $category = $request->validated();
+        $category = ProductCategory::create($request->validated());
 
-        return response()->json([$category], 201);
+        return response()->json($category, 201);
     }
+
+
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        $category = ProductCategory::find($id);
+        $category = ProductCategory::with('childrenRecursive')->findOrFail($id);
 
-        return response()->json([$category], 200);
+        return response()->json($category, 200);
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(ProductCategoryUpdateRequest $request, string $id)
     {
-        $category = ProductCategory::find($id);
+        $category = ProductCategory::findOrFail($id);
         $category->update($request->validated());
+
+        return response()->json(['message' => 'Категория обновлена', 'data' => $category], 200);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
+<<<<<<< HEAD
         $category = ProductCategory::find($id);
         $category->delete();
         
         return response()->json(['message'=>'deleted], 200)
+=======
+        $category = ProductCategory::findOrFail($id);
+        $category->delete();
+
+        return response()->json(['message' => 'Категория удалена'], 200);
+>>>>>>> 2efcbdb (ProductController дописан, ProductCategoryController пофикшен, PublicController теперь соответствует TODO, ProductCategoryUpdateRequest дописан, Все ресурсы были изменены, теперь возвращает все, как нужно, из модели ProductCategory убрал лишний метод, остальные были подвергнуты малозначительным изменениям, модель Product теперь полностью функционирует, у обеих моделей убран timestamps, sead)
     }
+
 }

@@ -18,8 +18,8 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'childs' => $this->whenLoaded('childrenRecursiveForCategory', function() {
-                return CategoryResource::collection($this->childrenRecursiveForCategory);
+            'childs' => $this->whenLoaded('childrenRecursive', function() {
+                return CategoryResource::collection($this->childrenRecursive);
             }),
         ];
     }

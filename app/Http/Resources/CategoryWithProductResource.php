@@ -17,10 +17,7 @@ class CategoryWithProductResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'childs' => $this->whenLoaded('childrenRecursiveForCategoryWithProduct', function() {
-                return CategoryWithProductResource::collection($this->childrenRecursiveForCategoryWithProduct);
-            }),
-            'products' => $this->whenLoaded('products', function() {
+            'products' => $this->whenLoaded('products', function () {
                 return ProductResource::collection($this->products);
             }),
         ];

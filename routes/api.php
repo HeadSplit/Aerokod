@@ -32,7 +32,7 @@ Route::group([],function () {
 
 Route::prefix('/public')->group(function () {
     Route::get('/products', [\App\Http\Controllers\PublicController::class, 'index']);
-    Route::get('/products/{slug}', [\App\Http\Controllers\PublicController::class, 'show']);
+    Route::get('/products/{product:slug}', [\App\Http\Controllers\PublicController::class, 'show']);
     Route::get('/product_categories', [\App\Http\Controllers\PublicController::class, 'showCategory']);
     Route::get('/all', [\App\Http\Controllers\PublicController::class, 'showCategoryWithProducts']);
 });

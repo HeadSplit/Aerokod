@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('product_categories')->ondelete('cascade');
-            $table->timestamps();
         });
     }
 

@@ -22,7 +22,11 @@ class ProductCategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+<<<<<<< HEAD
             title' => 'required|string',
+=======
+            'title' => 'sometimes|string',
+>>>>>>> 2efcbdb (ProductController дописан, ProductCategoryController пофикшен, PublicController теперь соответствует TODO, ProductCategoryUpdateRequest дописан, Все ресурсы были изменены, теперь возвращает все, как нужно, из модели ProductCategory убрал лишний метод, остальные были подвергнуты малозначительным изменениям, модель Product теперь полностью функционирует, у обеих моделей убран timestamps, sead)
             'parent_id' => 'sometimes|nullable|integer|exists:product_categories,id|not_in:'. $this->route('id'),
         ];
     }

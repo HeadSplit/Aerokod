@@ -13,8 +13,12 @@ class ProductCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        ProductCategory::factory()->count(10)->create()->each(function ($category) {
-            ProductCategory::factory()->count(3)->create(['parent_id' => $category->id]);
+        ProductCategory::factory()->count(10)->create()->each(function ($parentCategory) {
+            ProductCategory::factory()->count(3)->create(['parent_id' => $parentCategory->id])
+                ->each(function ($subCategory) {
+                    ProductCategory::factory()->count(2)->create(['parent_id' => $subCategory->id]);
+                });
         });
     }
+
 }

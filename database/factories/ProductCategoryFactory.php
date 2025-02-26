@@ -21,7 +21,7 @@ class ProductCategoryFactory extends Factory
         $faker = Faker::create('ru_RU');
         return [
             'title' => $this->faker->word(),
-            'parent_id' => rand(0, 1) ? ProductCategory::inRandomOrder()->value('id') : null,
+            'parent_id' => ProductCategory::inRandomOrder()->value('id') ?: null,
         ];
     }
 }
