@@ -59,17 +59,11 @@ class ProductCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-<<<<<<< HEAD
-        $category = ProductCategory::find($id);
-        $category->delete();
-        
-        return response()->json(['message'=>'deleted], 200)
-=======
+
         $category = ProductCategory::findOrFail($id);
         $category->delete();
 
-        return response()->json(['message' => 'Категория удалена'], 200);
->>>>>>> 2efcbdb (ProductController дописан, ProductCategoryController пофикшен, PublicController теперь соответствует TODO, ProductCategoryUpdateRequest дописан, Все ресурсы были изменены, теперь возвращает все, как нужно, из модели ProductCategory убрал лишний метод, остальные были подвергнуты малозначительным изменениям, модель Product теперь полностью функционирует, у обеих моделей убран timestamps, sead)
+        return response()->json(['message'=>'deleted'], 200);
     }
 
 }

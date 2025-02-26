@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\ProductCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +37,4 @@ Route::prefix('/public')->group(function () {
     Route::get('/product_categories', [\App\Http\Controllers\PublicController::class, 'showCategory']);
     Route::get('/all', [\App\Http\Controllers\PublicController::class, 'showCategoryWithProducts']);
 });
+Route::apiResource('categories', ProductCategoryController::class);

@@ -12,6 +12,7 @@ class ProductCategory extends Model
     protected $table = 'product_categories';
     public $timestamps = false;
 
+    protected $fillable = ['title', 'parent_id'];
     public function products()
     {
         return $this->hasMany(Product::class, 'category_id');
